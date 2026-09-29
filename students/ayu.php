@@ -29,15 +29,15 @@ $currentYear = date('Y');
     <title><?= htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8') ?></title>
     <style>
         :root {
-            --bg: #f4f7fb;
+            --bg: #f0f4ff;
             --surface: #ffffff;
             --text: #172033;
             --muted: #657089;
-            --primary: #2457d6;
-            --primary-dark: #173e9f;
-            --border: #dfe5ef;
+            --primary: #6c63d9;
+            --primary-dark: #5148b8;
+            --border: #e0e4f2;
             --radius: 18px;
-            --shadow: 0 18px 50px rgba(23, 32, 51, .08);
+            --shadow: 0 12px 30px rgba(108, 99, 217, .10);
         }
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -53,11 +53,11 @@ $currentYear = date('Y');
             position: sticky;
             top: 0;
             z-index: 20;
-            background: rgba(255,255,255,.92);
+            background: rgba(255,255,255,.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
         }
-        .nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+        .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
         .brand { font-weight: 800; letter-spacing: -.02em; }
         .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
         .nav a { color: var(--text); text-decoration: none; font-weight: 650; }
@@ -69,13 +69,13 @@ $currentYear = date('Y');
         h2 { font-size: clamp(1.55rem, 3vw, 2.25rem); letter-spacing: -.03em; margin-top: 0; }
         .lead { color: var(--muted); font-size: 1.08rem; max-width: 720px; }
         .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-        .btn { display: inline-block; padding: 12px 18px; border-radius: 12px; text-decoration: none; font-weight: 750; border: 1px solid var(--border); }
-        .btn-primary { background: var(--primary); color: white; border-color: var(--primary); }
-        .btn-primary:hover { background: var(--primary-dark); }
+        .btn { display: inline-block; padding: 13px 20px; border-radius: 13px; text-decoration: none; font-weight: 750; border: 1px solid var(--border); transition: all .25s ease; }
+        .btn-primary { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 6px 15px rgba(83, 105, 217, .2) }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
         .btn-secondary { background: white; color: var(--text); }
         .profile-card, .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
         .profile-card { padding: 26px; }
-        .avatar { width: 76px; height: 76px; border-radius: 22px; display: grid; place-items: center; background: var(--primary); color: white; font-size: 1.8rem; font-weight: 850; margin-bottom: 18px; }
+        .avatar { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #6c63d9, #a29bfe); color: white; font-size: 1.8rem; font-weight: 850; margin-bottom: 18px; box-shadow: 0 8px 20px rgba(108, 99, 217, .25); }
         .meta { display: grid; gap: 12px; }
         .meta-row { padding: 12px 0; border-bottom: 1px solid var(--border); }
         .meta-row:last-child { border-bottom: 0; }
@@ -109,12 +109,12 @@ $currentYear = date('Y');
     <section class="hero" id="home">
         <div class="container hero-grid">
             <div>
-                <div class="eyebrow">Tugas Interface Web</div>
-                <h1>Bangun interface yang jelas, responsif, dan mudah digunakan.</h1>
-                <p class="lead">Ini adalah starter interface. Silakan ubah layout, konten, komponen, dan interaksi menjadi rancangan Anda sendiri tanpa memindahkan pekerjaan ke file lain.</p>
+                <div class="eyebrow">WELCOME TO MY WEBSITE</div>
+                <h1>Halo, Saya Ayu! Selamat Datang di Website Saya</h1>
+                <p class="lead">Website ini merupakan halaman personal saya sebagai mahasiswa Rekayasa Perangkat Lunak. Saya sedang belajar membuat tampilan website yang menarik, sederhana, dan responsif.</p>
                 <div class="actions">
-                    <a class="btn btn-primary" href="#fitur">Lihat Komponen</a>
-                    <a class="btn btn-secondary" href="#tentang">Identitas</a>
+                    <a class="btn btn-primary" href="#fitur">Kenali saya</a>
+                    <a class="btn btn-secondary" href="#tentang">Tentang saya</a>
                 </div>
             </div>
             <aside class="profile-card" id="tentang">
@@ -131,11 +131,11 @@ $currentYear = date('Y');
 
     <section id="fitur">
         <div class="container">
-            <h2>Contoh area interface</h2>
+            <h2>Apa yang saya pelajari?</h2>
             <div class="grid-3">
-                <article class="card"><strong>01 · Informasi</strong><p>Gunakan hierarki visual agar informasi utama mudah ditemukan pengguna.</p></article>
-                <article class="card"><strong>02 · Interaksi</strong><p>Tambahkan form, tombol, modal, filter, atau interaksi JavaScript sesuai kebutuhan.</p></article>
-                <article class="card"><strong>03 · Responsif</strong><p>Pastikan halaman tetap nyaman digunakan pada desktop maupun perangkat mobile.</p></article>
+                <article class="card"><strong>01 · Web Design</strong><p>Belajar membuat tampilan website yang menarik dan nyaman digunakan.</p></article>
+                <article class="card"><strong>02 · Programming</strong><p>Mengenal HTML, CSS, JavaScript, dan PHP untuk membangun website.</p></article>
+                <article class="card"><strong>03 · Responsive Design</strong><p>Mempelajari cara membuat website yang dapat dibuka melalui laptop maupun HP.</p></article>
             </div>
         </div>
     </section>
