@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RPL Interface Gallery 2026</title>
+<meta name="description" content="Galeri tugas interface web mahasiswa Rekayasa Perangkat Lunak">
+<style>
+:root{--bg:#0b1020;--surface:#141b30;--text:#f6f8ff;--muted:#aab5d1;--line:#26304b;--accent:#7ea2ff}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at top,#17264b 0,#0b1020 42%);color:var(--text);min-height:100vh}
+.wrap{width:min(1180px,calc(100% - 32px));margin:auto}header{padding:76px 0 36px}.tag{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:800}h1{font-size:clamp(2.2rem,6vw,5rem);line-height:1;letter-spacing:-.055em;margin:.3em 0}p{color:var(--muted);max-width:780px;font-size:1.05rem}.toolbar{display:flex;gap:12px;margin:28px 0 14px}input{width:min(420px,100%);padding:13px 16px;border-radius:12px;border:1px solid var(--line);background:#0e1528;color:white;outline:none}input:focus{border-color:var(--accent)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:18px 0 64px}.card{display:flex;flex-direction:column;min-height:190px;padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(20,27,48,.84);text-decoration:none;color:var(--text);transition:.18s ease}.card:hover{transform:translateY(-3px);border-color:#5e7ed0;background:#18213b}.username{color:var(--accent);font-size:.85rem;font-weight:800;margin-bottom:26px}.card strong{font-size:1.08rem}.card small{color:var(--muted);margin-top:5px}.open{margin-top:auto;color:#dce5ff;font-size:.88rem}footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:.9rem}.hidden{display:none}@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){header{padding-top:52px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="tag">Rekayasa Perangkat Lunak</div><h1>Interface Gallery.</h1><p>Satu repository kelas, satu file PHP per mahasiswa. Pilih nama untuk membuka hasil interface yang sudah dideploy melalui Vercel.</p><div class="toolbar"><input id="search" type="search" placeholder="Cari nama, NIM, atau username..." aria-label="Cari mahasiswa"></div></div></header>
+<main class="wrap"><div class="grid" id="studentGrid"><a class="card" href="/student/bagas"><span class="username">@bagas</span><strong>Rasendriya Bagas Utomo</strong><small>220104023</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/aldrin"><span class="username">@aldrin</span><strong>Aldrin Sandeanto</strong><small>240104001</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/auriel"><span class="username">@auriel</span><strong>Auriel Argi Ristama</strong><small>240104002</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/bani"><span class="username">@bani</span><strong>Bani Ismoyo</strong><small>240104003</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/raoul"><span class="username">@raoul</span><strong>Jalalludin Raoul Aswar</strong><small>240104004</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/raihan"><span class="username">@raihan</span><strong>Muhammad Raihan Hibatullah</strong><small>240104006</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/rizki"><span class="username">@rizki</span><strong>Rizki Dwi Lestari</strong><small>240104007</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/rasya"><span class="username">@rasya</span><strong>Muhammad Rasya Robi Ahnaf Sandjoyo</strong><small>240104008</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/najwa"><span class="username">@najwa</span><strong>Najwa Kania Hafizhah</strong><small>240104009</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/roikhan"><span class="username">@roikhan</span><strong>Roikhan Nur Fauzi</strong><small>240104010</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/novi"><span class="username">@novi</span><strong>Novi Ardianto</strong><small>240104012</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/yusuf"><span class="username">@yusuf</span><strong>Yusuf Rizal Indrianto</strong><small>240104013</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/ayu"><span class="username">@ayu</span><strong>Prihatin Puji Ayu Lestari</strong><small>240104014</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/rifky"><span class="username">@rifky</span><strong>Raja Rifky Rahmadani</strong><small>240104015</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/dedy"><span class="username">@dedy</span><strong>Dedy Nurcahya</strong><small>240104017</small><span class="open">Buka interface →</span></a>
+<a class="card" href="/student/soffin"><span class="username">@soffin</span><strong>Muhammad Soffin Halim Sampurna</strong><small>240104019</small><span class="open">Buka interface →</span></a></div></main>
+<footer><div class="wrap">RPL Interface Repository · 2026</div></footer>
+<script>
+const q=document.getElementById('search');const cards=[...document.querySelectorAll('.card')];q.addEventListener('input',()=>{const term=q.value.toLowerCase().trim();cards.forEach(c=>c.classList.toggle('hidden',!c.textContent.toLowerCase().includes(term)))});
+</script>
+</body>
+</html>
