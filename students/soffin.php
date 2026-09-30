@@ -16,6 +16,8 @@ $student = [
     'username' => 'soffin',
 ];
 
+$clubLogo = 'https://thumb.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/250px-Manchester_United_FC_crest.svg.png';
+
 $pageTitle = 'Manchester United - The Red Devils | ' . $student['name'];
 $currentYear = date('Y');
 
@@ -75,37 +77,37 @@ $eras = [
 // Gambar dari Wikimedia Commons (Creative Commons / Public Domain)
 $images = [
     [
-        'url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Manchester_United_Old_Trafford_%28cropped%29.jpg/1280px-Manchester_United_Old_Trafford_%28cropped%29.jpg',
+        'url' => 'https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Manchester_United_Old_Trafford_%28cropped%29.jpg/960px-Manchester_United_Old_Trafford_%28cropped%29.jpg',
         'alt' => 'Old Trafford Stadium - Theatre of Dreams, foto udara',
         'caption' => 'Old Trafford — Theatre of Dreams (Kapasitas: 74.310)',
         'credit' => 'Foto: Arne Müseler, CC BY-SA 3.0 DE',
     ],
     [
-        'url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Old_Trafford_Stadium_-_geograph.org.uk_-_7293664.jpg/1024px-Old_Trafford_Stadium_-_geograph.org.uk_-_7293664.jpg',
+        'url' => 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Old_Trafford_Stadium_-_geograph.org.uk_-_7293664.jpg/960px-Old_Trafford_Stadium_-_geograph.org.uk_-_7293664.jpg',
         'alt' => 'Old Trafford dari luar stadion',
         'caption' => 'Tampak luar Old Trafford, rumah MU sejak 1910',
         'credit' => 'Foto: David Dixon, CC BY-SA 2.0',
     ],
     [
-        'url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Sir_Matt_Busby_Statue%2C_Old_Trafford_-_geograph.org.uk_-_5674974.jpg/640px-Sir_Matt_Busby_Statue%2C_Old_Trafford_-_geograph.org.uk_-_5674974.jpg',
+        'url' => 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Sir_Matt_Busby_Statue%2C_Old_Trafford_-_geograph.org.uk_-_5674974.jpg',
         'alt' => 'Patung Sir Matt Busby di depan Old Trafford',
         'caption' => 'Patung Sir Matt Busby — Legenda yang membangun United',
         'credit' => 'Foto: David Dixon, CC BY-SA 2.0',
     ],
     [
-        'url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/The_United_Trinity_statue_outside_Manchester_United_football_ground_-_geograph.org.uk_-_8107597.jpg/1024px-The_United_Trinity_statue_outside_Manchester_United_football_ground_-_geograph.org.uk_-_8107597.jpg',
+        'url' => 'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/The_United_Trinity_statue_outside_Manchester_United_football_ground_-_geograph.org.uk_-_8107597.jpg/960px-The_United_Trinity_statue_outside_Manchester_United_football_ground_-_geograph.org.uk_-_8107597.jpg',
         'alt' => 'Patung United Trinity: Best, Law, Charlton',
         'caption' => 'United Trinity — Best, Law & Charlton',
         'credit' => 'Foto: Gerald England, CC BY-SA 2.0',
     ],
     [
-        'url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Old_Trafford%2C_The_Munich_Tunnel_and_Memorial_Clock_-_geograph.org.uk_-_5671550.jpg/640px-Old_Trafford%2C_The_Munich_Tunnel_and_Memorial_Clock_-_geograph.org.uk_-_5671550.jpg',
+        'url' => 'https://upload.wikimedia.org/wikipedia/commons/1/18/Old_Trafford%2C_The_Munich_Tunnel_and_Memorial_Clock_-_geograph.org.uk_-_5671550.jpg',
         'alt' => 'Munich Memorial Clock di Old Trafford',
         'caption' => 'Munich Clock — Mengenang Tragedi 6 Februari 1958',
         'credit' => 'Foto: David Dixon, CC BY-SA 2.0',
     ],
     [
-        'url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stretford_End_2019.jpg/1024px-Stretford_End_2019.jpg',
+        'url' => 'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Stretford_End_2019.jpg/960px-Stretford_End_2019.jpg',
         'alt' => 'Stretford End di Old Trafford',
         'caption' => 'Stretford End — Jantung supporter United',
         'credit' => 'CC BY-SA 4.0',
@@ -117,6 +119,7 @@ $images = [
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
     <meta name="description" content="Halaman Manchester United - Pencapaian, Legenda, dan Sejarah The Red Devils">
     <title><?= htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8') ?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,6 +172,11 @@ $images = [
             letter-spacing: 0.05em;
             display: flex; align-items: center; gap: 10px;
             text-decoration: none;
+        }
+        .nav-logo {
+            width: 36px; height: 36px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
         }
         .nav-brand .devil { font-size: 1.8rem; }
         .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -461,7 +469,8 @@ $images = [
 <header class="navbar">
     <div class="container nav-inner">
         <a href="#home" class="nav-brand">
-            <span class="devil">😈</span> MANCHESTER UNITED
+            <img src="<?= htmlspecialchars($clubLogo) ?>" alt="Manchester United Logo" class="nav-logo" referrerpolicy="no-referrer">
+            <span>MANCHESTER UNITED</span>
         </a>
         <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">☰</button>
         <nav class="nav-links" aria-label="Navigasi utama">
@@ -479,7 +488,10 @@ $images = [
 <section class="hero" id="home">
     <div class="container hero-content">
         <div>
-            <div class="hero-badge">⚽ Est. 1878 · Newton Heath → Manchester United</div>
+            <div class="hero-badge">
+                <img src="<?= htmlspecialchars($clubLogo) ?>" alt="MU" style="width: 18px; height: 18px; object-fit: contain; vertical-align: middle; margin-right: 6px;" referrerpolicy="no-referrer">
+                Est. 1878 · Newton Heath → Manchester United
+            </div>
             <h1>THE <span>RED DEVILS</span><br>GLORY GLORY<br>MAN UNITED</h1>
             <p class="hero-desc">
                 Dari Newton Heath 1878 hingga menjadi klub paling sukses di Inggris.
@@ -508,7 +520,8 @@ $images = [
         <div class="hero-image">
             <img src="<?= htmlspecialchars($images[0]['url']) ?>"
                  alt="<?= htmlspecialchars($images[0]['alt']) ?>"
-                 loading="eager">
+                 loading="eager"
+                 referrerpolicy="no-referrer">
         </div>
     </div>
 </section>
@@ -585,7 +598,8 @@ $images = [
             <div class="gallery-item fade-in">
                 <img src="<?= htmlspecialchars($img['url']) ?>"
                      alt="<?= htmlspecialchars($img['alt']) ?>"
-                     loading="lazy">
+                     loading="lazy"
+                     referrerpolicy="no-referrer">
                 <div class="gallery-caption">
                     <strong><?= htmlspecialchars($img['caption']) ?></strong>
                     <small><?= htmlspecialchars($img['credit']) ?></small>
@@ -609,7 +623,10 @@ $images = [
                 <div class="student-meta">
                     NIM: <?= htmlspecialchars($student['nim']) ?><br>
                     Username: <?= htmlspecialchars($student['username']) ?><br>
-                    <span>😈 GGMU — Glory Glory Man United</span>
+                    <span style="display: inline-flex; align-items: center; gap: 6px;">
+                        <img src="<?= htmlspecialchars($clubLogo) ?>" alt="MU" style="width: 16px; height: 16px; object-fit: contain;" referrerpolicy="no-referrer">
+                        GGMU — Glory Glory Man United
+                    </span>
                 </div>
             </div>
         </div>
@@ -619,7 +636,10 @@ $images = [
 <!-- FOOTER -->
 <footer class="footer">
     <div class="container">
-        <div class="footer-brand">😈 GLORY GLORY MAN UNITED</div>
+        <div class="footer-brand" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <img src="<?= htmlspecialchars($clubLogo) ?>" alt="Manchester United Logo" style="width: 28px; height: 28px; object-fit: contain;" referrerpolicy="no-referrer">
+            <span>GLORY GLORY MAN UNITED</span>
+        </div>
         <p>&copy; <?= htmlspecialchars($currentYear) ?> <?= htmlspecialchars($student['name']) ?> · RPL · Tugas Interface Web</p>
         <p style="margin-top: 8px;">Foto-foto dari <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> (Creative Commons)</p>
     </div>
