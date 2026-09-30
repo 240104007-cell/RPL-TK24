@@ -1,14 +1,13 @@
+ ```php
 <?php
-declare(strict_types=1);
-
 // ============================================================
 // TUGAS INTERFACE WEB - REKAYASA PERANGKAT LUNAK
 // Mahasiswa : Rizki Dwi Lestari
 // NIM       : 240104007
 // Username  : rizki
 //
-// Seluruh HTML, CSS, JavaScript, dan PHP berada dalam
-// satu file.
+// Aturan: seluruh HTML, CSS, JavaScript, dan PHP tugas mahasiswa
+//          ditempatkan pada SATU file ini.
 // ============================================================
 
 $student = [
@@ -20,108 +19,76 @@ $student = [
 $pageTitle = 'Interface Web - ' . $student['name'];
 $currentYear = date('Y');
 ?>
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="description"
-          content="Tugas Interface Web Rekayasa Perangkat Lunak">
+        content="Tugas interface web Rekayasa Perangkat Lunak">
 
-    <title>
-        <?= htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8') ?>
-    </title>
-
+    <title><?= htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8') ?></title>
 
     <style>
 
         /* =====================================================
-           RESET
-        ===================================================== */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-
-        /* =====================================================
-           VARIABLE
+           RESET & VARIABEL
         ===================================================== */
 
         :root {
-
-            --primary: #4f46e5;
-            --secondary: #7c3aed;
-            --primary-dark: #3730a3;
-
-            --background: #f5f7ff;
-            --white: #ffffff;
-
+            --bg: #f5f7ff;
+            --surface: #ffffff;
             --text: #172033;
             --muted: #68738a;
 
-            --border: #e3e7f0;
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #7c3aed;
+
+            --border: #e4e7f0;
 
             --radius: 20px;
 
             --shadow:
-                0 15px 40px rgba(30, 35, 70, 0.10);
-
+                0 15px 40px rgba(40, 45, 80, .10);
         }
 
-
-        /* =====================================================
-           BODY
-        ===================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         html {
             scroll-behavior: smooth;
         }
 
         body {
-
             font-family:
-                Arial,
-                Helvetica,
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
                 sans-serif;
 
             background:
                 linear-gradient(
                     135deg,
-                    #f8f9ff,
-                    #eef1ff
+                    #f7f8ff 0%,
+                    #eef2ff 100%
                 );
 
             color: var(--text);
-
             line-height: 1.6;
-
-            overflow-x: hidden;
-
         }
 
-
-        /* =====================================================
-           CONTAINER
-        ===================================================== */
-
         .container {
-
-            width: min(
-                1100px,
-                calc(100% - 32px)
-            );
-
-            margin: auto;
-
+            width: min(1100px, calc(100% - 32px));
+            margin-inline: auto;
         }
 
 
@@ -130,46 +97,169 @@ $currentYear = date('Y');
         ===================================================== */
 
         .topbar {
-
             position: sticky;
-
             top: 0;
-
             z-index: 100;
 
             background:
-                rgba(255, 255, 255, 0.90);
+                rgba(255, 255, 255, .88);
 
-            backdrop-filter:
-                blur(12px);
+            backdrop-filter: blur(14px);
 
             border-bottom:
-                1px solid var(--border);
-
+                1px solid rgba(220, 225, 240, .8);
         }
 
-
         .nav {
-
             min-height: 70px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
-            gap: 20px;
+            gap: 24px;
+        }
 
+        .brand {
+            font-size: 1.05rem;
+            font-weight: 800;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+
+            text-decoration: none;
+
+            font-weight: 650;
+
+            padding: 8px 14px;
+
+            border-radius: 10px;
+
+            transition:
+                .25s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            transform: translateY(-2px);
         }
 
 
-        .brand {
+        /* =====================================================
+           HERO
+        ===================================================== */
 
-            font-size: 1.1rem;
+        .hero {
+            padding:
+                90px 0 55px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(79, 70, 229, .14),
+                    rgba(124, 58, 237, .08)
+                );
+
+            border-radius: 50%;
+
+            top: -120px;
+            right: -100px;
+
+            filter: blur(10px);
+        }
+
+        .hero-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.25fr .75fr;
+
+            gap: 45px;
+
+            align-items: center;
+        }
+
+
+        /* =====================================================
+           HERO TEXT
+        ===================================================== */
+
+        .hero-content {
+            animation:
+                fadeUp .8s ease forwards;
+        }
+
+        .eyebrow {
+            display: inline-block;
+
+            color: var(--primary);
+
+            background:
+                rgba(79, 70, 229, .10);
+
+            padding:
+                7px 13px;
+
+            border-radius: 50px;
 
             font-weight: 800;
 
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+
+            font-size: .78rem;
+        }
+
+        h1 {
+            font-size:
+                clamp(2.4rem, 6vw, 4.5rem);
+
+            line-height: 1.04;
+
+            letter-spacing: -.055em;
+
+            margin:
+                18px 0;
+        }
+
+        h1 span {
             background:
                 linear-gradient(
                     90deg,
@@ -181,236 +271,14 @@ $currentYear = date('Y');
 
             -webkit-text-fill-color:
                 transparent;
-
         }
-
-
-        .nav-links {
-
-            display: flex;
-
-            gap: 8px;
-
-        }
-
-
-        .nav-links a {
-
-            color: var(--text);
-
-            text-decoration: none;
-
-            font-weight: 600;
-
-            padding:
-                8px 14px;
-
-            border-radius: 10px;
-
-            transition:
-                all 0.3s ease;
-
-        }
-
-
-        .nav-links a:hover {
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--secondary)
-                );
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
-        .hero {
-
-            position: relative;
-
-            padding:
-                90px 0 60px;
-
-            overflow: hidden;
-
-        }
-
-
-        .hero::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 350px;
-
-            height: 350px;
-
-            border-radius: 50%;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(79, 70, 229, 0.15),
-                    rgba(124, 58, 237, 0.08)
-                );
-
-            top: -130px;
-
-            right: -100px;
-
-            animation:
-                floating 6s ease-in-out infinite;
-
-        }
-
-
-        .hero::after {
-
-            content: "";
-
-            position: absolute;
-
-            width: 180px;
-
-            height: 180px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(124, 58, 237, 0.08);
-
-            bottom: -80px;
-
-            left: -60px;
-
-            animation:
-                floating 7s ease-in-out infinite reverse;
-
-        }
-
-
-        .hero-grid {
-
-            position: relative;
-
-            z-index: 2;
-
-            display: grid;
-
-            grid-template-columns:
-                1.25fr 0.75fr;
-
-            gap: 45px;
-
-            align-items: center;
-
-        }
-
-
-        /* =====================================================
-           HERO CONTENT
-        ===================================================== */
-
-        .hero-content {
-
-            animation:
-                fadeUp 0.8s ease forwards;
-
-        }
-
-
-        .eyebrow {
-
-            display: inline-block;
-
-            color:
-                var(--primary);
-
-            background:
-                rgba(79, 70, 229, 0.10);
-
-            padding:
-                7px 14px;
-
-            border-radius:
-                50px;
-
-            font-size:
-                0.78rem;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                0.08em;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        h1 {
-
-            font-size:
-                clamp(
-                    2.5rem,
-                    6vw,
-                    4.5rem
-                );
-
-            line-height:
-                1.05;
-
-            letter-spacing:
-                -0.05em;
-
-            margin:
-                18px 0;
-
-        }
-
-
-        h1 span {
-
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--primary),
-                    var(--secondary)
-                );
-
-            -webkit-background-clip:
-                text;
-
-            -webkit-text-fill-color:
-                transparent;
-
-        }
-
 
         .lead {
+            color: var(--muted);
 
-            max-width:
-                680px;
+            font-size: 1.08rem;
 
-            color:
-                var(--muted);
-
-            font-size:
-                1.08rem;
-
+            max-width: 680px;
         }
 
 
@@ -419,7 +287,6 @@ $currentYear = date('Y');
         ===================================================== */
 
         .actions {
-
             display: flex;
 
             gap: 12px;
@@ -427,35 +294,31 @@ $currentYear = date('Y');
             flex-wrap: wrap;
 
             margin-top: 28px;
-
         }
 
-
         .btn {
-
             display: inline-block;
 
             padding:
-                12px 20px;
+                12px 19px;
 
-            border-radius:
-                12px;
+            border-radius: 12px;
 
-            text-decoration:
-                none;
+            text-decoration: none;
 
-            font-weight:
-                700;
+            font-weight: 750;
+
+            border:
+                1px solid var(--border);
 
             transition:
-                all 0.3s ease;
-
+                .25s ease;
         }
 
-
         .btn-primary {
-
             color: white;
+
+            border: none;
 
             background:
                 linear-gradient(
@@ -466,48 +329,33 @@ $currentYear = date('Y');
 
             box-shadow:
                 0 8px 20px
-                rgba(79, 70, 229, 0.25);
-
+                rgba(79, 70, 229, .25);
         }
-
 
         .btn-primary:hover {
-
             transform:
-                translateY(-4px);
+                translateY(-3px);
 
             box-shadow:
-                0 14px 28px
-                rgba(79, 70, 229, 0.35);
-
+                0 12px 28px
+                rgba(79, 70, 229, .35);
         }
-
 
         .btn-secondary {
+            background: white;
 
-            color:
-                var(--text);
-
-            background:
-                white;
-
-            border:
-                1px solid var(--border);
-
+            color: var(--text);
         }
 
-
         .btn-secondary:hover {
-
-            color:
-                var(--primary);
+            transform:
+                translateY(-3px);
 
             border-color:
                 var(--primary);
 
-            transform:
-                translateY(-4px);
-
+            color:
+                var(--primary);
         }
 
 
@@ -516,9 +364,8 @@ $currentYear = date('Y');
         ===================================================== */
 
         .profile-card {
-
             background:
-                rgba(255, 255, 255, 0.94);
+                rgba(255, 255, 255, .92);
 
             border:
                 1px solid var(--border);
@@ -526,56 +373,35 @@ $currentYear = date('Y');
             border-radius:
                 var(--radius);
 
-            padding:
-                28px;
+            padding: 28px;
 
             box-shadow:
                 var(--shadow);
 
             animation:
-                fadeUp 1s ease forwards;
+                fadeUp .9s ease forwards;
 
             transition:
-                all 0.3s ease;
-
+                .3s ease;
         }
-
 
         .profile-card:hover {
-
             transform:
-                translateY(-8px);
+                translateY(-6px);
 
             box-shadow:
-                0 25px 55px
-                rgba(30, 35, 70, 0.14);
-
+                0 22px 55px
+                rgba(40, 45, 80, .14);
         }
 
-
         .avatar {
+            width: 78px;
+            height: 78px;
 
-            width: 80px;
+            border-radius: 22px;
 
-            height: 80px;
-
-            border-radius:
-                22px;
-
-            display:
-                grid;
-
-            place-items:
-                center;
-
-            color:
-                white;
-
-            font-size:
-                2rem;
-
-            font-weight:
-                800;
+            display: grid;
+            place-items: center;
 
             background:
                 linear-gradient(
@@ -584,146 +410,90 @@ $currentYear = date('Y');
                     var(--secondary)
                 );
 
+            color: white;
+
+            font-size: 1.9rem;
+
+            font-weight: 850;
+
+            margin-bottom: 18px;
+
             box-shadow:
                 0 10px 25px
-                rgba(79, 70, 229, 0.25);
-
-            margin-bottom:
-                18px;
-
-            animation:
-                pulse 3s ease-in-out infinite;
-
+                rgba(79, 70, 229, .25);
         }
-
 
         .profile-card h2 {
+            font-size: 1.5rem;
 
-            font-size:
-                1.5rem;
-
-            margin-bottom:
-                18px;
-
+            margin-bottom: 18px;
         }
-
 
         .meta {
+            display: grid;
 
-            display:
-                grid;
-
-            gap:
-                10px;
-
+            gap: 10px;
         }
 
-
         .meta-row {
-
-            padding:
-                12px 0;
+            padding: 12px 0;
 
             border-bottom:
                 1px solid var(--border);
-
         }
-
 
         .meta-row:last-child {
-
-            border-bottom:
-                none;
-
+            border-bottom: none;
         }
-
 
         .label {
+            display: block;
 
-            display:
-                block;
+            color: var(--muted);
 
-            color:
-                var(--muted);
-
-            font-size:
-                0.82rem;
-
+            font-size: .82rem;
         }
 
-
         .value {
+            font-weight: 750;
 
-            font-weight:
-                700;
-
-            word-break:
-                break-word;
-
+            word-break: break-word;
         }
 
 
         /* =====================================================
-           SECTION
+           FITUR
         ===================================================== */
 
         section {
-
             padding:
-                50px 0;
-
+                45px 0;
         }
-
 
         .section-title {
-
-            margin-bottom:
-                25px;
-
+            margin-bottom: 24px;
         }
-
-
-        .section-title h2 {
-
-            font-size:
-                2rem;
-
-            margin-bottom:
-                5px;
-
-        }
-
 
         .section-title p {
+            color: var(--muted);
 
-            color:
-                var(--muted);
-
+            margin-top: 5px;
         }
 
-
-        /* =====================================================
-           CARD FITUR
-        ===================================================== */
-
         .grid-3 {
-
-            display:
-                grid;
+            display: grid;
 
             grid-template-columns:
                 repeat(3, 1fr);
 
-            gap:
-                18px;
-
+            gap: 18px;
         }
 
-
         .card {
-
             background:
-                rgba(255, 255, 255, 0.95);
+                rgba(255, 255, 255, .95);
+
+            padding: 25px;
 
             border:
                 1px solid var(--border);
@@ -731,91 +501,62 @@ $currentYear = date('Y');
             border-radius:
                 var(--radius);
 
-            padding:
-                25px;
-
             box-shadow:
                 0 8px 25px
-                rgba(30, 35, 70, 0.05);
+                rgba(40, 45, 80, .05);
 
             transition:
-                all 0.3s ease;
+                .3s ease;
 
             animation:
                 fadeUp 1s ease forwards;
-
         }
 
-
         .card:hover {
-
             transform:
                 translateY(-8px);
 
             border-color:
-                rgba(79, 70, 229, 0.30);
+                rgba(79, 70, 229, .3);
 
             box-shadow:
                 0 18px 40px
-                rgba(30, 35, 70, 0.10);
-
+                rgba(40, 45, 80, .10);
         }
-
 
         .card-number {
+            display: inline-flex;
 
-            display:
-                flex;
+            align-items: center;
+            justify-content: center;
 
-            align-items:
-                center;
+            width: 38px;
+            height: 38px;
 
-            justify-content:
-                center;
+            border-radius: 12px;
 
-            width:
-                42px;
-
-            height:
-                42px;
-
-            border-radius:
-                12px;
+            color: var(--primary);
 
             background:
-                rgba(79, 70, 229, 0.10);
+                rgba(79, 70, 229, .10);
 
-            color:
-                var(--primary);
+            font-weight: 850;
 
-            font-weight:
-                800;
-
-            margin-bottom:
-                16px;
-
+            margin-bottom: 16px;
         }
-
 
         .card strong {
+            display: block;
 
-            display:
-                block;
+            font-size: 1.05rem;
 
-            font-size:
-                1.05rem;
-
-            margin-bottom:
-                8px;
-
+            margin-bottom: 8px;
         }
 
-
         .card p {
+            color: var(--muted);
 
-            color:
-                var(--muted);
-
+            margin-bottom: 0;
         }
 
 
@@ -824,25 +565,19 @@ $currentYear = date('Y');
         ===================================================== */
 
         footer {
+            margin-top: 35px;
 
-            margin-top:
-                30px;
+            padding: 40px 0;
 
-            padding:
-                40px 0;
+            color: var(--muted);
 
-            text-align:
-                center;
-
-            color:
-                var(--muted);
-
-            background:
-                rgba(255, 255, 255, 0.65);
+            text-align: center;
 
             border-top:
                 1px solid var(--border);
 
+            background:
+                rgba(255, 255, 255, .6);
         }
 
 
@@ -853,75 +588,17 @@ $currentYear = date('Y');
         @keyframes fadeUp {
 
             from {
-
-                opacity:
-                    0;
+                opacity: 0;
 
                 transform:
                     translateY(25px);
-
             }
 
             to {
-
-                opacity:
-                    1;
+                opacity: 1;
 
                 transform:
                     translateY(0);
-
-            }
-
-        }
-
-
-        @keyframes floating {
-
-            0% {
-
-                transform:
-                    translateY(0);
-
-            }
-
-            50% {
-
-                transform:
-                    translateY(20px);
-
-            }
-
-            100% {
-
-                transform:
-                    translateY(0);
-
-            }
-
-        }
-
-
-        @keyframes pulse {
-
-            0% {
-
-                transform:
-                    scale(1);
-
-            }
-
-            50% {
-
-                transform:
-                    scale(1.05);
-
-            }
-
-            100% {
-
-                transform:
-                    scale(1);
-
             }
 
         }
@@ -933,94 +610,53 @@ $currentYear = date('Y');
 
         @media (max-width: 780px) {
 
-            .hero-grid {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
+            .hero-grid,
             .grid-3 {
-
-                grid-template-columns:
-                    1fr;
-
+                grid-template-columns: 1fr;
             }
-
 
             .hero {
-
-                padding-top:
-                    60px;
-
+                padding-top: 60px;
             }
-
 
             .nav {
+                align-items: flex-start;
 
-                flex-direction:
-                    column;
+                padding: 15px 0;
 
-                align-items:
-                    flex-start;
+                flex-direction: column;
 
-                padding:
-                    15px 0;
-
+                gap: 8px;
             }
-
 
             .nav-links {
+                width: 100%;
 
-                width:
-                    100%;
+                justify-content: flex-start;
 
-                overflow-x:
-                    auto;
-
+                overflow-x: auto;
             }
 
-
             h1 {
-
-                font-size:
-                    2.7rem;
-
+                font-size: 2.6rem;
             }
 
         }
 
     </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
 
 <header class="topbar">
 
     <div class="container nav">
 
         <div class="brand">
-
-            RPL /
-            <?= htmlspecialchars(
-                $student['username'],
-                ENT_QUOTES,
-                'UTF-8'
-            ) ?>
-
+            RPL / <?= htmlspecialchars($student['username']) ?>
         </div>
 
-
-        <nav class="nav-links"
-             aria-label="Navigasi utama">
+        <nav class="nav-links" aria-label="Navigasi utama">
 
             <a href="#home">
                 Home
@@ -1041,57 +677,33 @@ $currentYear = date('Y');
 </header>
 
 
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
 <main>
 
-
     <!-- =====================================================
-         HOME / HERO
+         HERO
     ====================================================== -->
 
-    <section
-        class="hero"
-        id="home"
-    >
+    <section class="hero" id="home">
 
         <div class="container hero-grid">
-
-
-            <!-- TEKS UTAMA -->
 
             <div class="hero-content">
 
                 <div class="eyebrow">
-
                     Tugas Interface Web
-
                 </div>
 
-
                 <h1>
-
                     Interface Web yang
-
-                    <span>
-                        modern & sederhana.
-                    </span>
-
+                    <span>modern & sederhana.</span>
                 </h1>
 
-
                 <p class="lead">
-
-                    Ini adalah tugas interface web
-                    Rekayasa Perangkat Lunak yang
-                    dirancang dengan tampilan sederhana,
-                    bersih, responsif, dan mudah digunakan.
-
+                    Halaman ini merupakan tugas interface web
+                    Rekayasa Perangkat Lunak yang dirancang
+                    dengan tampilan sederhana, bersih,
+                    responsif, dan mudah digunakan.
                 </p>
-
 
                 <div class="actions">
 
@@ -1101,7 +713,6 @@ $currentYear = date('Y');
                     >
                         Lihat Fitur
                     </a>
-
 
                     <a
                         class="btn btn-secondary"
@@ -1115,9 +726,8 @@ $currentYear = date('Y');
             </div>
 
 
-
             <!-- =================================================
-                 PROFIL MAHASISWA
+                 PROFILE
             ================================================== -->
 
             <aside
@@ -1137,22 +747,13 @@ $currentYear = date('Y');
 
                 </div>
 
-
                 <h2>
-
                     <?= htmlspecialchars(
-                        $student['name'],
-                        ENT_QUOTES,
-                        'UTF-8'
+                        $student['name']
                     ) ?>
-
                 </h2>
 
-
                 <div class="meta">
-
-
-                    <!-- NIM -->
 
                     <div class="meta-row">
 
@@ -1161,20 +762,13 @@ $currentYear = date('Y');
                         </span>
 
                         <span class="value">
-
                             <?= htmlspecialchars(
-                                $student['nim'],
-                                ENT_QUOTES,
-                                'UTF-8'
+                                $student['nim']
                             ) ?>
-
                         </span>
 
                     </div>
 
-
-
-                    <!-- USERNAME -->
 
                     <div class="meta-row">
 
@@ -1183,20 +777,13 @@ $currentYear = date('Y');
                         </span>
 
                         <span class="value">
-
                             <?= htmlspecialchars(
-                                $student['username'],
-                                ENT_QUOTES,
-                                'UTF-8'
+                                $student['username']
                             ) ?>
-
                         </span>
 
                     </div>
 
-
-
-                    <!-- MATA KULIAH -->
 
                     <div class="meta-row">
 
@@ -1210,7 +797,6 @@ $currentYear = date('Y');
 
                     </div>
 
-
                 </div>
 
             </aside>
@@ -1218,7 +804,6 @@ $currentYear = date('Y');
         </div>
 
     </section>
-
 
 
     <!-- =====================================================
@@ -1229,7 +814,6 @@ $currentYear = date('Y');
 
         <div class="container">
 
-
             <div class="section-title">
 
                 <h2>
@@ -1238,17 +822,14 @@ $currentYear = date('Y');
 
                 <p>
                     Beberapa prinsip yang digunakan
-                    dalam tampilan website ini.
+                    pada halaman ini.
                 </p>
 
             </div>
 
 
-
             <div class="grid-3">
 
-
-                <!-- CARD 1 -->
 
                 <article class="card">
 
@@ -1261,19 +842,13 @@ $currentYear = date('Y');
                     </strong>
 
                     <p>
-
                         Informasi utama dibuat jelas
                         menggunakan hierarki visual
-                        sehingga mudah ditemukan
-                        oleh pengguna.
-
+                        sehingga mudah ditemukan pengguna.
                     </p>
 
                 </article>
 
-
-
-                <!-- CARD 2 -->
 
                 <article class="card">
 
@@ -1286,18 +861,13 @@ $currentYear = date('Y');
                     </strong>
 
                     <p>
-
                         Tombol dan navigasi diberikan
                         efek sederhana agar halaman
                         terasa lebih interaktif.
-
                     </p>
 
                 </article>
 
-
-
-                <!-- CARD 3 -->
 
                 <article class="card">
 
@@ -1310,11 +880,9 @@ $currentYear = date('Y');
                     </strong>
 
                     <p>
-
                         Tampilan dapat menyesuaikan
                         ukuran layar desktop maupun
                         perangkat mobile.
-
                     </p>
 
                 </article>
@@ -1326,9 +894,7 @@ $currentYear = date('Y');
 
     </section>
 
-
 </main>
-
 
 
 <!-- =========================================================
@@ -1340,18 +906,9 @@ $currentYear = date('Y');
     <div class="container">
 
         &copy;
+        <?= htmlspecialchars($currentYear) ?>
 
-        <?= htmlspecialchars(
-            $currentYear,
-            ENT_QUOTES,
-            'UTF-8'
-        ) ?>
-
-        <?= htmlspecialchars(
-            $student['name'],
-            ENT_QUOTES,
-            'UTF-8'
-        ) ?>
+        <?= htmlspecialchars($student['name']) ?>
 
         · RPL
 
@@ -1359,8 +916,6 @@ $currentYear = date('Y');
 
 </footer>
 
-
-
 </body>
-
 </html>
+```
